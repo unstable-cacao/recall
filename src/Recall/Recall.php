@@ -12,6 +12,9 @@ class Recall implements IRecall
 	private $parameters;
 
 
+	private function __construct() {}
+
+
 	/**
 	 * @param string $className
 	 * @param object|IRecallProvider|\Closure|string $provider
@@ -49,5 +52,14 @@ class Recall implements IRecall
 		return (is_string($class) ?
 			$reflectionMethod->invoke(null, $parameters) :
 			$reflectionMethod->invoke($class, $parameters));
+	}
+
+
+	/**
+	 * @return Recall
+	 */
+	public static function create()
+	{
+		return new Recall();
 	}
 }
