@@ -28,6 +28,6 @@ class CallbackProvider implements IRecallProvider
 	public function get(\ReflectionParameter $parameter)
 	{
 		$callback = $this->callback;
-		return $callback();
+		return $callback($parameter);
 	}
 }
