@@ -4,11 +4,12 @@ namespace Recall;
 
 use Recall\Base\IRecall;
 use Recall\Base\IRecallProvider;
+use Recall\Providers\InstanceProvider;
 
 
 class Recall implements IRecall
 {
-	/** @var array */
+	/** @var IRecallProvider[] */
 	private $parameters;
 
 
@@ -19,7 +20,15 @@ class Recall implements IRecall
 	 */
 	public function register($className, $provider)
 	{
-		$this->parameters[$className] = $provider;
+		if ($provider instanceof IRecallProvider)
+		{
+			$this->parameters[$className] = $provider;
+		}
+		else if (is_object($provider))
+		{
+			$this->parameters[$className] = new InstanceProvider($provider);
+		}
+		
 		return $this;
 	}
 	
@@ -43,7 +52,7 @@ class Recall implements IRecall
 			if (!key_exists($className, $this->parameters))
 				throw new \Exception("No such parameter registered.");
 
-			$parameters[] = $this->parameters[$className];
+			$parameters[] = $this->parameters[$className]->get($parameter);
 		}
 
 		return (is_string($class) ?
