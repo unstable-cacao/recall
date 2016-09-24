@@ -4,9 +4,6 @@ namespace Recall;
 
 use Recall\Base\IRecall;
 use Recall\Base\IRecallProvider;
-use Recall\Providers\CallbackProvider;
-use Recall\Providers\ClassNameProvider;
-use Recall\Providers\InstanceProvider;
 
 
 class Recall implements IRecall
@@ -22,23 +19,7 @@ class Recall implements IRecall
 	 */
 	public function register($className, $provider)
 	{
-		if ($provider instanceof IRecallProvider)
-		{
-			$this->parameters[$className] = $provider;
-		}
-		else if (is_object($provider))
-		{
-			$this->parameters[$className] = new InstanceProvider($provider);
-		}
-		else if (is_callable($provider))
-		{
-			$this->parameters[$className] = new CallbackProvider($provider);
-		}
-		else if (is_string($provider))
-		{
-			$this->parameters[$className] = new ClassNameProvider($provider);
-		}
-		
+		$this->parameters[$className] = ProvidersFactory::get($provider);
 		return $this;
 	}
 	
