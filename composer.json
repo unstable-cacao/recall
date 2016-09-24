@@ -1,0 +1,8 @@
+{
+    "name": "unstable-cacao/recall",
+    "description": "Kind of DI for method calls",
+    "type": "lib",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {}
+}
