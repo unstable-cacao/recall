@@ -7,13 +7,13 @@ interface IRecall
 	/**
 	 * @param string $className
 	 * @param object|IRecallProvider|\Closure|string $provider
-	 * @return mixed
+	 * @return static
 	 */
 	public function register($className, $provider);
 	
 	/**
 	 * @param object|string $class String for static call, instance of instance call.
-	 * @param $method
+	 * @param string $method
 	 * @return mixed
 	 */
 	public function call($class, $method);
