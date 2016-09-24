@@ -4,5 +4,7 @@
     "type": "lib",
     "license": "MIT",
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "oktopost/skeleton": "^1.0"
+    }
 }
