@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a6d1709fe50338153dca3a0dbb14935d",
-    "content-hash": "f999abc83181fe1c644cd9b835128495",
+    "hash": "e7b490aaa1a071a5ef5b73940e02c562",
+    "content-hash": "14f24cd7a5965794cb8f6621dde68915",
     "packages": [
         {
             "name": "oktopost/objection",

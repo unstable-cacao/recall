@@ -4,7 +4,14 @@
     "type": "lib",
     "license": "MIT",
     "minimum-stability": "stable",
+    
     "require": {
-        "oktopost/skeleton": "^1.0"
+        "oktopost/skeleton": "1.0.2"
+    },
+    
+    "autoload": {
+        "psr-0": {
+            "Recall": "src"
+        }
     }
 }
