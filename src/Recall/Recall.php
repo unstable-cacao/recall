@@ -92,8 +92,8 @@ class Recall implements IRecall
 		$parameters = $this->getParameters($reflectionMethod);
 
 		return (is_string($class) ?
-			$reflectionMethod->invoke(null, $parameters) :
-			$reflectionMethod->invoke($class, $parameters));
+			$reflectionMethod->invokeArgs(null, $parameters) :
+			$reflectionMethod->invokeArgs($class, $parameters));
 	}
 
 

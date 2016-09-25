@@ -3,6 +3,7 @@ namespace Recall\Providers;
 
 
 use Recall\Base\IRecallProvider;
+use Recall\Exceptions\ParameterClassNotFoundException;
 
 
 class ClassNameProvider implements IRecallProvider
@@ -27,6 +28,9 @@ class ClassNameProvider implements IRecallProvider
 	 */
 	public function get(\ReflectionParameter $parameter)
 	{
+		if (!class_exists($this->className))
+			throw new ParameterClassNotFoundException($this->className, $parameter);
+		
 		return new $this->className;
 	}
 }

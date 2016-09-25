@@ -18,18 +18,23 @@ class ProvidersFactory
 	{
 		if ($provider instanceof IRecallProvider)
 		{
-			return (is_string($provider) ? new $provider : $provider);
-		}
-		else if (is_object($provider))
-		{
-			return new InstanceProvider($provider);
+			return $provider;
 		}
 		else if (is_callable($provider))
 		{
 			return new CallbackProvider($provider);
 		}
+		else if (is_object($provider))
+		{
+			return new InstanceProvider($provider);
+		}
 		else if (is_string($provider))
 		{
+			if (is_subclass_of($provider, IRecallProvider::class))
+			{
+				return new $provider;
+			}
+			
 			return new ClassNameProvider($provider);
 		}
 
